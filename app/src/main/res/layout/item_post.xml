@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/avatarImageView"
@@ -93,54 +93,77 @@
 
         <ImageView
             android:id="@+id/likeImageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/dimen_16"
-            android:background="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_16"
             android:contentDescription="@null"
+            android:src="@drawable/ic_favorite_border_black_24dp"
+            app:layout_constraintEnd_toStartOf="@+id/commentImageView"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageRecyclerView" />
 
         <ImageView
             android:id="@+id/commentImageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/dimen_16"
-            android:background="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
             android:contentDescription="@null"
+            android:src="@drawable/ic_comment"
+            app:layout_constraintEnd_toStartOf="@+id/sendImageView"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/likeImageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageRecyclerView" />
+            app:layout_constraintTop_toTopOf="@+id/likeImageView" />
 
         <ImageView
             android:id="@+id/sendImageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/dimen_16"
-            android:background="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
             android:contentDescription="@null"
+            android:src="@drawable/ic_send"
+            app:layout_constraintEnd_toStartOf="@+id/startIndicatorGuideline"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/commentImageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageRecyclerView" />
+            app:layout_constraintTop_toTopOf="@+id/likeImageView" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startIndicatorGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
 
         <me.relex.circleindicator.CircleIndicator3
             android:id="@+id/indicator"
-            android:layout_width="50dp"
-            android:layout_height="48dp"
-            android:layout_gravity="bottom"
-            android:layout_margin="@dimen/dimen_16"
-            android:layout_marginBottom="48dp"
-            app:layout_constraintStart_toEndOf="@+id/sendImageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageRecyclerView" />
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:ci_drawable="@drawable/selected_dot"
+            app:ci_drawable_unselected="@drawable/unselected_dot"
+            app:layout_constraintBottom_toBottomOf="@id/likeImageView"
+            app:layout_constraintEnd_toEndOf="@+id/endIndicatorGuideline"
+            app:layout_constraintHeight_default="spread"
+            app:layout_constraintStart_toStartOf="@+id/startIndicatorGuideline"
+            app:layout_constraintTop_toTopOf="@id/likeImageView" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endIndicatorGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
 
         <ImageView
             android:id="@+id/bookmarkImageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_16"
-            android:background="@android:color/black"
             android:contentDescription="@null"
+            android:src="@drawable/ic_bookmark_border_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/indicator"
+            app:layout_constraintStart_toStartOf="@+id/endIndicatorGuideline"
             app:layout_constraintTop_toBottomOf="@+id/imageRecyclerView" />
 
         <TextView
@@ -149,6 +172,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_16"
             android:text="@{viewModel.usersLiked}"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -160,6 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_16"
             android:text="@{viewModel.description}"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -168,13 +193,19 @@
         <TextView
             android:id="@+id/timePostCreatedTextView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="@dimen/dimen_16"
             android:text="@{viewModel.timePostCreated}"
             android:textAllCaps="true"
+            app:layout_constraintHeight_default="wrap"
+            app:layout_constraintWidth_default="spread"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

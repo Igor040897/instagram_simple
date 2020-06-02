@@ -3,4 +3,23 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- ItemPostViewModel -->
+    <plurals name="day_count_ago">
+        <item quantity="one">%1$d day ago</item>
+        <item quantity="other">%1$d days ago</item>
+    </plurals>
+
+    <plurals name="hour_count_ago">
+        <item quantity="one">%1$d hour ago</item>
+        <item quantity="other">%1$d hours ago</item>
+    </plurals>
+
+    <plurals name="users_others">
+        <item quantity="one">%1$d other</item>
+        <item quantity="other">%1$d others</item>
+    </plurals>
+
+    <string name="liked_by">Liked by</string>
+    <string name="and">and</string>
 </resources>

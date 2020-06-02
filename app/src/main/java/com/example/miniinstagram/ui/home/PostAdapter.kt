@@ -49,7 +49,7 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostItemVH>() {
             binding.apply {
 
                 imageRecyclerView.adapter = imagesAdapter
-                indicator.setBackgroundColor(root.context.resources.getColor(android.R.color.black))
+//                indicator.setBackgroundColor(root.context.resources.getColor(android.R.color.black))
 
                 val pagerSnapHelper = PagerSnapHelper()
                 pagerSnapHelper.attachToRecyclerView(imageRecyclerView)
@@ -74,7 +74,7 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostItemVH>() {
 
         fun bind(item: Post) {
             binding.indicator.createIndicators(itemCount + 1, 0)
-            binding.viewModel?.start(item)
+            binding.viewModel?.start(item, binding.root.context)
             imagesAdapter.setItems(item.images)
         }
     }
