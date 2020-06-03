@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Mini instagram</string>
     <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_add_post">Add post</string>
     <string name="title_dashboard">Dashboard</string>
+    <string name="title_news">News</string>
     <string name="title_notifications">Notifications</string>
 
     <string name="title_instagram">Instagram</string>

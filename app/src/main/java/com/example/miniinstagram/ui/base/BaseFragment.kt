@@ -18,7 +18,6 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
     abstract val contentLayoutId: Int
         @LayoutRes get
 
-    /** Override this value to change toolbar title */
     protected open val title: Int? = null
         @StringRes get
 

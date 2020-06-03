@@ -1,13 +1,10 @@
-package com.example.miniinstagram.ui.dashboard
+package com.example.miniinstagram.ui.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel (
-//    application: Application,
-//    private val repository: Repository
-) : ViewModel() {
+class SearchViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

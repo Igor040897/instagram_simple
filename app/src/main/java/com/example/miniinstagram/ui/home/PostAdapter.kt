@@ -108,7 +108,6 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostItemVH>() {
                         position: Int, positionOffset: Float,
                         positionOffsetPixels: Int
                     ) {
-                        //todo refactoring and check logic
                         if (positionOffsetPixels == 0) {
                             imageRecyclerView.scrollToPosition(position)
                         }

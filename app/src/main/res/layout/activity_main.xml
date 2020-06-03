@@ -24,14 +24,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/makePhotoImageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_camera_alt_black_24dp" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/appName"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -42,7 +42,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/dimen_16sp" />
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/messagesImageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

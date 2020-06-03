@@ -8,10 +8,7 @@ import kotlin.coroutines.CoroutineContext
 
 open class RepositoryImpl(
     private val fileWorker: FileWorker
-) : Repository, CoroutineScope {
-
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main
+) : Repository {
 
     override val allPosts: Flow<List<Post>>
         get() = fileWorker.getPosts()

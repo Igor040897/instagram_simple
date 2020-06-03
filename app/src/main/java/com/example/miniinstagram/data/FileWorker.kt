@@ -19,7 +19,7 @@ class FileWorker(private val context: Context) {
         }
     }
 
-    fun readFromAssets(jsonFileName: String) = context.readFromAssets(jsonFileName)
+    private fun readFromAssets(jsonFileName: String) = context.readFromAssets(jsonFileName)
 
     companion object {
         @Volatile
