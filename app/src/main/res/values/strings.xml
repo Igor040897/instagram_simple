@@ -4,6 +4,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="title_instagram">Instagram</string>
+
     <!-- ItemPostViewModel -->
     <plurals name="day_count_ago">
         <item quantity="one">%1$d day ago</item>

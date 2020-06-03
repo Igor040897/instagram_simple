@@ -1,8 +1,8 @@
 package com.example.miniinstagram.di.module.ui
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.miniinstagram.MainActivity
-import com.example.miniinstagram.MainActivityViewModel
+import com.example.miniinstagram.ui.main.MainActivity
+import com.example.miniinstagram.ui.main.MainActivityViewModel
 import com.example.miniinstagram.di.module.RepositoryModule
 import com.example.miniinstagram.di.module.ViewModelFactory
 import dagger.Module

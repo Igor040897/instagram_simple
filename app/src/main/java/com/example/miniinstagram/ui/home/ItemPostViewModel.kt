@@ -11,7 +11,9 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.View
+import android.widget.TextView
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.miniinstagram.R
 import com.example.miniinstagram.betweenDays
@@ -21,24 +23,25 @@ import com.example.miniinstagram.data.models.Post
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 class ItemPostViewModel : ViewModel() {
 
-    val avatar = ObservableField<Uri>()
-    val nickName = ObservableField<String>()
-    val photoPlace = ObservableField<String>()
+    val linkCommand = MutableLiveData<String>()
 
-    val usersLiked = ObservableField<SpannableStringBuilder>()
-    val description = ObservableField<SpannableStringBuilder>()
-
-    val timePostCreated = ObservableField<String>()
+    val avatarField = ObservableField<Uri>()
+    val nickNameField = ObservableField<String>()
+    val photoPlaceField = ObservableField<String>()
+    val usersLikedField = ObservableField<SpannableStringBuilder>()
+    val descriptionField = ObservableField<SpannableStringBuilder>()
+    val timePostCreatedField = ObservableField<String>()
 
     fun start(post: Post, context: Context) {
-        avatar.set(Uri.parse(post.avatarUrl))
-        nickName.set(post.nickName)
-        photoPlace.set(post.photoPlace)
-        usersLiked.set(setupUsersLikedField(ArrayList(post.usersLiked), context))
-        description.set(setupDescriptionField(post.nickName, post.description))
-        timePostCreated.set(setupTimePassed(post.date, context))
+        avatarField.set(Uri.parse(post.avatarUrl))
+        nickNameField.set(post.nickName)
+        photoPlaceField.set(post.photoPlace)
+        usersLikedField.set(setupUsersLikedField(ArrayList(post.usersLiked), context))
+        descriptionField.set(setupDescriptionField(post.nickName, post.description))
+        timePostCreatedField.set(setupTimePassed(post.date, context))
     }
 
     private fun setupTimePassed(date: String, context: Context): String {
@@ -89,7 +92,7 @@ class ItemPostViewModel : ViewModel() {
             users.size > 2 -> {
                 val twoUsersBoldSpannable = getTwoUsersBoldSpannable()
                 val countOtherUsers = context.resources.getQuantityString(
-                    R.plurals.day_count_ago,
+                    R.plurals.users_others,
                     users.size - 1,
                     users.size - 1
                 )
@@ -127,12 +130,21 @@ class ItemPostViewModel : ViewModel() {
 
     private fun setupSpanForLinks(text: String): SpannableStringBuilder {
         val completeText = SpannableStringBuilder(text)
-        val clickableUserAgreementSpan = object : ClickableSpan() {
-            override fun onClick(textView: View) {
-            }
-        }
 
         fun setLink(start: Int, end: Int) {
+            completeText.setSpan(
+                object : ClickableSpan() {
+                    override fun onClick(textView: View) {
+                        val spanned = (textView as TextView).text as Spanned
+                        val startIndex = spanned.getSpanStart(this)
+                        val endIndex = spanned.getSpanEnd(this)
+                        linkCommand.value = spanned.subSequence(startIndex, endIndex).toString()
+                    }
+                },
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
             completeText.setSpan(
                 ForegroundColorSpan(Color.BLUE),
                 start,

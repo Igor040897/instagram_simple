@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.miniinstagram.data.Repository
 import com.example.miniinstagram.ui.base.BaseViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -16,9 +17,11 @@ class HomeViewModel (
 ) : BaseViewModel(application) {
 
     val adapter = PostAdapter()
-    var job: Job = launch {
+    var job: Job = launch(Dispatchers.IO) {
         repository.allPosts.collect {
-            adapter.setItems(it)
+            launch(Dispatchers.Main) {
+                adapter.setItems(it)
+            }
         }
     }
 

@@ -5,11 +5,12 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Post(
+    val id: Long,
     val avatarUrl: String,
     val nickName: String,
     val photoPlace: String,
     val images: List<String>,
     val usersLiked: List<String>,
     val description: String,
-    val date : String
+    val date: String
 ) : Parcelable

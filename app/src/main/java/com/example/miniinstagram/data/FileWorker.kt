@@ -11,13 +11,15 @@ import kotlinx.coroutines.flow.flow
 class FileWorker(private val context: Context) {
 
     fun getPosts(): Flow<List<Post>> {
-        val postListJson = context.readFromAssets("postList.json")
+        val postListJson = readFromAssets("postList.json")
         val listType = object : TypeToken<List<Post>>() {}.type
         val posts = Gson().fromJson<List<Post>>(postListJson, listType)
         return flow {
             emit(posts)
         }
     }
+
+    fun readFromAssets(jsonFileName: String) = context.readFromAssets(jsonFileName)
 
     companion object {
         @Volatile

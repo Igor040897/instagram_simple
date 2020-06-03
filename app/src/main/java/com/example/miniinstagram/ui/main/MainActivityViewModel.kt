@@ -1,4 +1,4 @@
-package com.example.miniinstagram
+package com.example.miniinstagram.ui.main
 
 import android.app.Application
 import com.example.miniinstagram.data.Repository

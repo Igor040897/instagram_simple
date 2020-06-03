@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlin.coroutines.CoroutineContext
 
-class RepositoryImpl(
+open class RepositoryImpl(
     private val fileWorker: FileWorker
 ) : Repository, CoroutineScope {
 
